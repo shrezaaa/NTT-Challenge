@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Article } from '../../types/article.type';
 import { ArticleService } from '../../services/article.service';
+import { MatAnchor } from "@angular/material/button";
 
 @Component({
   selector: 'app-articles-list',
@@ -17,7 +18,8 @@ import { ArticleService } from '../../services/article.service';
     MatIconModule,
     RouterLink,
     MatProgressSpinnerModule,
-  ],
+    MatAnchor
+],
   templateUrl: './articles-list.component.html',
 })
 export class ArticlesListComponent implements OnInit {

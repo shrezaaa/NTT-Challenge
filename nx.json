@@ -58,6 +58,9 @@
       "linter": "eslint",
       "style": "scss",
       "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "style": "scss"
     }
   }
 }

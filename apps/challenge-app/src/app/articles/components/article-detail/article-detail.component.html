@@ -19,7 +19,7 @@
       <mat-card-content>
         <p class="text-gray-600 italic mb-4">{{ data.article.description }}</p>
 
-        <div class="prose max-w-none" [innerText]="data.article.body"></div>
+        <div class="prose max-w-none" [textContent]="data.article.body"></div>
 
         <div class="mt-6 flex flex-wrap gap-2">
           @for (tag of data.article.tagList; track tag) {

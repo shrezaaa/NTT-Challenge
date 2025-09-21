@@ -8,9 +8,9 @@ export interface SidenavNode {
 
 export const SIDENAV_CONFIG: SidenavNode[] = [
   {
-    name: 'Post',
-    url: '/posts',
-    icon: 'groups',
+    name: 'Article',
+    url: '/articles',
+    icon: 'article',
     hasDividerAfter: true,
   },
 ];

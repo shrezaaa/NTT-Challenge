@@ -1,0 +1,17 @@
+<nav class="sticky top-0 bg-white h-14 w-full z-50">
+  <div class="flex h-full justify-start items-center">
+    @if (!isLeftExpanded) {
+    <div>
+      <button
+        style="margin-left: auto"
+        mat-icon-button
+        (click)="toggleLeftExpansion()"
+      >
+        <mat-icon> menu </mat-icon>
+      </button>
+    </div>
+    }
+
+    <div class="ps-2">Demo App</div>
+  </div>
+</nav>

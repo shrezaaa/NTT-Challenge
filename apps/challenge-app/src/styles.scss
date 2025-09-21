@@ -1,0 +1,66 @@
+@use "@angular/material" as mat;
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.sidenav-overrides(
+    (
+      container-width: '200px',
+      content-background-color: '#f3f4f6',
+    )
+  );
+}
+
+.mdc-text-field--filled {
+  background-color: #fcfcfc !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+button {
+  outline: none;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.mat-form-field-suffix {
+  align-self: center !important;
+}
+
+.table > :not(:first-child) {
+  border-top: 0;
+}
+
+.mat-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+.brand-font {
+  font-family: cursive, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans',
+    Arial, sans-serif;
+}

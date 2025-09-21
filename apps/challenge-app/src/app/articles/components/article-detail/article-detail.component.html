@@ -1,0 +1,77 @@
+<div class="max-w-4xl mx-auto p-6">
+  @if (article$ | async; as data) {
+    <mat-card class="rounded-2xl shadow-md mb-6">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img
+            [src]="data.article.author.image"
+            [alt]="data.article.author.username"
+            class="w-10 h-10 rounded-full"
+          />
+        </div>
+        <mat-card-title>{{ data.article.title }}</mat-card-title>
+        <mat-card-subtitle>
+          By {{ data.article.author.username }} ·
+          {{ data.article.createdAt | date: 'mediumDate' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="text-gray-600 italic mb-4">{{ data.article.description }}</p>
+
+        <div class="prose max-w-none" [textContent]="data.article.body"></div>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          @for (tag of data.article.tagList; track tag) {
+            <span class="bg-gray-100 text-sm px-2 py-1 rounded-full">
+              #{{ tag }}
+            </span>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <ng-container
+      *ngTemplateOutlet="loadingTpl; context: { message: 'Loading article...' }"
+    ></ng-container>
+  }
+
+  <section>
+    <h6 class="text-xl font-semibold mb-4">Comments</h6>
+
+    @if (comments$ | async; as cData) {
+      @for (comment of cData.comments; track comment.id) {
+        <mat-card class="mb-4 p-4 rounded-xl shadow-sm">
+          <div class="flex items-center space-x-3 mb-2">
+            <img
+              [src]="comment.author.image"
+              [alt]="comment.author.username"
+              class="w-8 h-8 rounded-full"
+            />
+            <div>
+              <p class="font-medium">{{ comment.author.username }}</p>
+              <p class="text-xs text-gray-500">
+                {{ comment.createdAt | date: 'medium' }}
+              </p>
+            </div>
+          </div>
+          <p class="text-gray-700">{{ comment.body }}</p>
+        </mat-card>
+      }
+    } @else {
+      <ng-container
+        *ngTemplateOutlet="
+          loadingTpl;
+          context: { message: 'Loading comments...' }
+        "
+      ></ng-container>
+    }
+  </section>
+</div>
+
+<ng-template #loadingTpl let-message="message">
+  <div class="flex items-center justify-center py-10 text-gray-600">
+    <mat-spinner diameter="40"></mat-spinner>
+    <span class="ml-3">{{ message }}</span>
+  </div>
+</ng-template>

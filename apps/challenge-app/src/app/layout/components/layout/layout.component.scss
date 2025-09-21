@@ -1,0 +1,21 @@
+
+// :host::ng-deep.mat-drawer-inner-container {
+//   overflow: hidden;
+// }
+
+.drawer{
+  border-radius: 0;  
+}
+
+.router-outlet {
+  height: calc(100% - 56px);
+}
+
+// @media only screen and (min-width: 768px) {
+//   #left-drawer {
+//     transition: all 500ms;
+//     * {
+//       transition: all 500ms;
+//     }
+//   }
+// }

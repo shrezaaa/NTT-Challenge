@@ -13,6 +13,8 @@ It integrates with the **RealWorld API** for article data and demonstrates best 
 - **[Angular Material](https://material.angular.io/)** – UI component library  
 - **RxJS** – Reactive programming  
 - **Jasmine & Karma** – Unit testing  
+- **Angular Service Worker** – PWA support  
+- **Docker** – Containerized builds  
 
 ---
 
@@ -33,6 +35,15 @@ It integrates with the **RealWorld API** for article data and demonstrates best 
   - `ArticleService` handles API calls for list, details, and comments  
   - Unit tests for both **services** and **components**  
 
+- **Progressive Web App (PWA)**
+  - Added service worker configuration with Angular's `provideServiceWorker`  
+  - Caches API calls for offline usage  
+  - Provides fallback when offline  
+
+- **Docker**
+  - Dockerfile included for production builds with Nginx  
+  - Supports deployment-ready container  
+
 ---
 
 ## Project Structure (relevant parts)
@@ -49,6 +60,7 @@ apps/
           article.service.ts
         types/
           article.type.ts
+    ngsw-config.json
 ```
 
 ---
@@ -73,17 +85,26 @@ nx test challenge-app
 pnpm install
 ```
 
-### 2. Run the app
+### 2. Run the app in dev mode
 ```bash
 nx serve challenge-app
 ```
 
 The app will be available at `http://localhost:4200`.
 
-### 3. Run tests
+### 3. Build for production
 ```bash
-nx test challenge-app
+nx build challenge-app --configuration=production
 ```
+
+### 4. Run the production build locally
+Instead of Docker, you can use [angular-http-server](https://www.npmjs.com/package/angular-http-server):
+
+```bash
+npx angular-http-server --path ./dist/apps/challenge-app/browser --port 4200
+```
+
+The app will be served at `http://localhost:4200` with service worker enabled.
 
 ---
 
@@ -107,6 +128,12 @@ nx test challenge-app
 
 - **Testing**  
   Focused on service isolation (ensuring API endpoints are correct) and component rendering (articles + comments). Used Angular testing utilities with mocks instead of hitting real API endpoints to ensure tests are deterministic.
+
+- **PWA**  
+  Added service worker support to cache static assets and article API requests. Provides offline fallback and improves performance.  
+
+- **Docker**  
+  Production Dockerfile included. Uses multi-stage build with Node and Nginx for a minimal, optimized image.  
 
 ---
 

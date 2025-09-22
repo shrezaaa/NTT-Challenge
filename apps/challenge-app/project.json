@@ -26,7 +26,8 @@
           "@angular/material/prebuilt-themes/azure-blue.css",
           "apps/challenge-app/src/styles.scss"
         ],
-        "scripts": []
+        "scripts": [],
+        "serviceWorker": "apps/challenge-app/ngsw-config.json"
       },
       "configurations": {
         "production": {
@@ -42,7 +43,13 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "fileReplacements": [
+            {
+              "replace": "apps/challenge-app/src/app/environments/environment.ts",
+              "with": "apps/challenge-app/src/app/environments/environment.prod.ts"
+            }
+          ]
         },
         "development": {
           "optimization": false,

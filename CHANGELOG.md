@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2025-09-22
+
+### Added
+
+- Added **Dockerfile** for containerization (`feat: add docker file`).
+- Implemented **Progressive Web App (PWA)** support (`feat: add pwa`).
+
+### Changed
+
+- Replaced environment configuration (`feat: replace environment`).
+
 ## [1.0.0] - 2025-09-22
 
 ### Added

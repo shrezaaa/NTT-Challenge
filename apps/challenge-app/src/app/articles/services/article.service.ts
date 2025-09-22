@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-// eslint-disable-next-line @nx/enforce-module-boundaries
-import { environment } from 'apps/challenge-app/src/environments/environment';
 import { Article, ArticleComment } from '../types/article.type';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class ArticleService {
